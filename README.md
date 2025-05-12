@@ -12,6 +12,7 @@ A system that can automatically generate presentation slides from scientific pap
 - For Linux, please also install `screen`.
 - A Node.js and Node Package Manager (npm).
 - Python 3.10+ (you may use Miniconda or venv).
+- Google GenAI key, which can be generated in [Google Cloud Platform](https://cloud.google.com/).
 
 ### Pulling Docker Images
 
@@ -39,6 +40,11 @@ cd backend
 - Install Python libraries and dependencies in `requirements.txt`.
 ```sh
 pip install -r requirements.txt
+```
+
+- Create environment variable file `.env` and fill the Google GenAI key in `GOOGLE_API_KEY`.
+```env
+GOOGLE_API_KEY=<fill_here>
 ```
 
 - Run the backend server. For Linux (e.g. Ubuntu, Debian, ...), you can create new screen session by running `screen -S <screen_name>`.
@@ -70,7 +76,7 @@ npm run start
 
 **Note:** You can set the port of the frontend server by appending `-p <port_number>` in the `start` argument in `package.json`
 
-**Note 2:** If you set the port below 1024, please install `libcap2-bin` and configure as shown below:
+**Note 2:** For Linux users who set the port below 1024, please install `libcap2-bin` and configure as shown below:
 ```sh
 sudo apt-get install libcap2-bin
 sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\`` 
